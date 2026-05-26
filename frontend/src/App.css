@@ -5,95 +5,219 @@
 body {
   margin: 0;
   font-family: Inter, Arial, sans-serif;
+  color: #e5e7eb;
   background:
-    radial-gradient(circle at top left, #2563eb 0, transparent 35%),
-    radial-gradient(circle at bottom right, #7c3aed 0, transparent 35%),
-    #0f172a;
-  color: #f8fafc;
+    linear-gradient(rgba(2, 6, 23, 0.84), rgba(2, 6, 23, 0.9)),
+    radial-gradient(circle at 20% 10%, #2563eb 0, transparent 30%),
+    radial-gradient(circle at 85% 20%, #9333ea 0, transparent 32%),
+    radial-gradient(circle at 50% 100%, #06b6d4 0, transparent 28%),
+    #020617;
 }
 
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 35px 20px;
+.app {
+  min-height: 100vh;
+  padding: 32px 0 80px;
 }
 
-h1 {
+.navbar {
+  margin-bottom: 36px;
+  padding: 34px;
+  border-radius: 32px;
+  background: rgba(15, 23, 42, 0.72);
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.42);
+  backdrop-filter: blur(22px);
+}
+
+.logo {
   text-align: center;
-  font-size: 56px;
-  margin: 10px 0 30px;
-  letter-spacing: -2px;
+  font-weight: 950 !important;
+  letter-spacing: -5px !important;
+  margin-bottom: 28px !important;
+  background: linear-gradient(135deg, #ffffff, #93c5fd, #c4b5fd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-h2 {
-  text-align: center;
-  font-size: 30px;
-  margin-bottom: 25px;
-}
-
-nav {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+.nav-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 12px;
-  margin-bottom: 35px;
 }
 
-button {
-  border: 1px solid rgba(255,255,255,0.15);
-  background: linear-gradient(135deg, #2563eb, #7c3aed);
-  color: white;
-  padding: 12px 18px;
-  border-radius: 999px;
-  cursor: pointer;
-  font-size: 15px;
-  font-weight: 600;
-  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.25);
-  transition: 0.2s ease;
+.nav-buttons button {
+  height: 48px;
+  border-radius: 18px !important;
+  text-transform: none !important;
+  font-weight: 900 !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  color: #e5e7eb !important;
+  box-shadow: none !important;
+  transition: 0.2s ease !important;
 }
 
-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 30px rgba(124, 58, 237, 0.35);
+.nav-buttons button:hover {
+  background: linear-gradient(135deg, #2563eb, #7c3aed) !important;
+  transform: translateY(-3px);
+  box-shadow: 0 18px 42px rgba(37, 99, 235, 0.35) !important;
 }
 
-.card {
-  max-width: 760px;
-  margin: 18px auto;
-  padding: 24px;
-  border-radius: 22px;
-  background: rgba(15, 23, 42, 0.76);
-  border: 1px solid rgba(255,255,255,0.12);
-  box-shadow: 0 20px 45px rgba(0,0,0,0.35);
-  backdrop-filter: blur(14px);
-}
-
-.card h3 {
-  margin-top: 0;
-  font-size: 24px;
-  color: #93c5fd;
-}
-
-.card p {
-  color: #dbeafe;
-  line-height: 1.6;
-}
-
-input {
-  width: 100%;
-  padding: 15px 18px;
-  border-radius: 16px;
-  border: 1px solid rgba(255,255,255,0.15);
-  background: rgba(255,255,255,0.08);
-  color: white;
-  font-size: 16px;
-  outline: none;
-}
-
-input::placeholder {
-  color: #94a3b8;
-}
-
-b {
+.page-title {
+  font-weight: 950 !important;
+  letter-spacing: -1.5px !important;
+  margin: 28px 0 24px !important;
   color: #ffffff;
+  border-left: 6px solid #60a5fa;
+  padding-left: 18px;
+}
+
+.info-card,
+.form-card {
+  border-radius: 28px !important;
+  background: rgba(15, 23, 42, 0.72) !important;
+  color: #e5e7eb !important;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.36) !important;
+  backdrop-filter: blur(18px);
+  margin-bottom: 18px;
+  overflow: hidden;
+  transition: 0.22s ease;
+}
+
+.info-card:hover,
+.form-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(96, 165, 250, 0.55);
+  box-shadow:
+    0 28px 80px rgba(0, 0, 0, 0.42),
+    0 0 50px rgba(37, 99, 235, 0.16) !important;
+}
+
+.info-card .MuiCardContent-root,
+.form-card {
+  padding: 32px !important;
+}
+
+.info-card h5 {
+  color: #ffffff;
+  font-weight: 950 !important;
+  letter-spacing: -0.6px;
+  margin-bottom: 12px !important;
+}
+
+.info-card p,
+.info-card .MuiTypography-root {
+  color: #cbd5e1;
+  font-size: 16.5px;
+  line-height: 1.7;
+}
+
+.card-text {
+  color: #dbeafe !important;
+}
+
+.card-extra {
+  color: #93c5fd !important;
+  margin-top: 12px !important;
+  font-weight: 700 !important;
+}
+
+.form-card {
+  padding-top: 42px !important;
+}
+
+.form-card .MuiTextField-root {
+  margin-top: 14px !important;
+  margin-bottom: 12px !important;
+}
+
+.MuiTextField-root {
+  background: rgba(255, 255, 255, 0.97);
+  border-radius: 18px;
+}
+
+.MuiInputLabel-root {
+  background: white;
+  padding: 0 8px !important;
+  border-radius: 8px;
+}
+
+.MuiOutlinedInput-root {
+  border-radius: 18px !important;
+}
+
+.MuiOutlinedInput-input {
+  padding: 20px !important;
+  font-size: 18px !important;
+}
+
+.MuiAlert-root {
+  border-radius: 18px !important;
+  margin-bottom: 20px !important;
+  font-weight: 800;
+}
+
+.MuiButton-root {
+  text-transform: none !important;
+  font-weight: 900 !important;
+}
+
+.info-card .MuiButton-root,
+.form-card .MuiButton-root {
+  border-radius: 999px !important;
+  padding: 12px 22px !important;
+  background: linear-gradient(135deg, #2563eb, #7c3aed) !important;
+  color: white !important;
+}
+
+.MuiCircularProgress-root {
+  display: block !important;
+  margin: 28px auto !important;
+  color: #93c5fd !important;
+}
+
+.app .MuiContainer-root > div:not(.navbar) {
+  animation: fadeIn 0.25s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .app {
+    padding: 18px 0 50px;
+  }
+
+  .navbar {
+    padding: 22px;
+    border-radius: 24px;
+  }
+
+  .logo {
+    font-size: 40px !important;
+    letter-spacing: -2px !important;
+  }
+
+  .nav-buttons {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .page-title {
+    font-size: 30px !important;
+  }
+
+  .info-card .MuiCardContent-root,
+  .form-card {
+    padding: 22px !important;
+  }
 }
