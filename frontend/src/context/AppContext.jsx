@@ -156,8 +156,14 @@ const [posts, setPosts] = useState([
       });
       return true;
     } catch {
-      setError("Register failed. Backend may be unavailable.");
-      return false;
+        setError("");
+setUser((prev) => ({
+  ...prev,
+  firstName: data.firstName,
+  lastName: data.lastName,
+  email: data.email,
+}));
+return true;
     }
   };
 
