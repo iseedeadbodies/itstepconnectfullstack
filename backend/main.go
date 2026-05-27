@@ -7,12 +7,14 @@ import (
 	"itstep-connect-backend/models"
 	"itstep-connect-backend/routes"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
-
 	config.ConnectDatabase()
+	config.ConnectMongo()
+	fmt.Println("Mongo function called")
 
 	err := config.DB.AutoMigrate(
 		&models.User{},
@@ -28,6 +30,8 @@ func main() {
 	}
 
 	r := gin.Default()
+
+	r.Use(cors.Default())
 
 	routes.SetupRoutes(r)
 

@@ -25,4 +25,7 @@ func SetupRoutes(r *gin.Engine) {
 	r.POST("/news", middleware.AuthMiddleware(), controllers.CreateNews)
 	r.PUT("/news/:id", middleware.AuthMiddleware(), controllers.UpdateNews)
 	r.DELETE("/news/:id", middleware.AuthMiddleware(), controllers.DeleteNews)
+
+	r.GET("/messages", controllers.GetMessages)
+	r.POST("/messages", controllers.CreateMessage)
 }
