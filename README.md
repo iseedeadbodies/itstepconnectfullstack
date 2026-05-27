@@ -1,238 +1,213 @@
-# ITSTEP Connect
+# ITSTEP Connect Fullstack Project
 
-ITSTEP Connect — fullstack web-приложение для студентов колледжа.
+## Описание проекта
 
-Проект создан для того, чтобы студенты могли смотреть новости, клубы, посты, искать информацию и пользоваться навигацией по активности колледжа.
+ITSTEP Connect — это fullstack платформа для студентов ITSTEP.
 
-## Технологии
+Проект включает:
+- frontend на React;
+- backend на Go + Gin;
+- PostgreSQL базу данных;
+- MongoDB NoSQL базу данных;
+- REST API;
+- авторизацию;
+- CRUD операции;
+- социальный функционал.
 
-### Frontend
+Пользователи могут:
+- регистрироваться и входить;
+- создавать посты;
+- просматривать новости;
+- вступать в клубы;
+- добавлять друзей;
+- просматривать профиль;
+- отправлять сообщения.
+
+---
+
+# Используемые технологии
+
+## Frontend
 - React
-- Vite
-- React Router
-- Context API
+- React Router DOM
 - Material UI
+- Context API
 - Axios
+- Vite
 
-### Backend
+## Backend
 - Go
 - Gin Framework
 - GORM
 - JWT Authentication
 
-### Database
+## SQL база данных
 - PostgreSQL
+- pgAdmin
 
-## Функции проекта
+## NoSQL база данных
+- MongoDB Atlas
 
-- регистрация пользователя
-- вход пользователя
-- профиль пользователя
-- лента постов
-- клубы и кружки
-- новости колледжа
-- поиск
-- друзья
-- навигация для студентов
-- админ-панель
-- REST API
-- JWT middleware
-- CRUD операции
+## Тестирование API
+- Thunder Client
 
-## Frontend архитектура
+## Проектирование
+- Figma
+- dbdiagram.io
 
-Frontend разделён на:
+---
 
-- `api` — работа с backend API
-- `context` — глобальное состояние приложения
-- `components` — переиспользуемые UI-компоненты
-- `pages` — отдельные страницы приложения
+# Архитектура проекта
 
-Навигация реализована через React Router.
+## Frontend
+
+Frontend содержит:
+- pages;
+- components;
+- context;
+- routing;
+- API requests.
 
 Основные страницы:
+- Login
+- Register
+- Posts
+- Profile
+- Friends
+- Clubs
+- News
+- Admin
 
-- `/login`
-- `/register`
-- `/profile`
-- `/posts`
-- `/clubs`
-- `/news`
-- `/friends`
-- `/search`
-- `/navigation`
-- `/admin`
+---
 
-## State Management
+## Backend
 
-Для управления состоянием используется Context API.
+Backend построен на REST API архитектуре.
 
-В глобальном состоянии хранятся:
+Реализованные endpoints:
+- /register
+- /login
+- /posts
+- /clubs
+- /news
+- /messages
 
-- пользователь
-- токен
-- посты
-- клубы
-- новости
-- друзья
-- поиск
-- loading
-- error
+Реализованный функционал:
+- CRUD операции;
+- middleware;
+- JWT авторизация;
+- PostgreSQL подключение;
+- MongoDB подключение.
 
-Также используются React hooks:
+---
 
-- `useState`
-- `useEffect`
-- `useContext`
+# SQL база данных
 
-## UI Library
+PostgreSQL используется для структурированных данных.
 
-Для интерфейса используется Material UI.
-
-Material UI был выбран потому что:
-- даёт готовые компоненты;
-- ускоряет разработку;
-- помогает сделать единый стиль приложения;
-- содержит удобные Button, Card, TextField, Alert и Typography.
-
-## Backend архитектура
-
-Backend разделён на:
-
-- `config`
-- `controllers`
-- `models`
-- `routes`
-- `middleware`
-
-Gin используется для роутинга и обработки HTTP-запросов.
-
-GORM используется для работы с PostgreSQL.
-
-## REST API
-
-### Auth
-- `POST /register`
-- `POST /login`
-
-### Posts
-- `GET /posts`
-- `POST /posts`
-- `PUT /posts/:id`
-- `DELETE /posts/:id`
-
-### Clubs
-- `GET /clubs`
-- `POST /clubs`
-- `PUT /clubs/:id`
-- `DELETE /clubs/:id`
-
-### News
-- `GET /news`
-- `POST /news`
-- `PUT /news/:id`
-- `DELETE /news/:id`
-
-## Database
-
-В PostgreSQL используются таблицы:
-
-- users
-- posts
-- clubs
-- news
-
-## SQL / NoSQL
-
-PostgreSQL используется для структурированных данных:
-
-- пользователи
-- посты
-- клубы
-- новости
-
-NoSQL часть можно использовать для:
-
-- сообщений
-- уведомлений
-- логов активности
-- realtime чатов
-
-Такие данные могут быстро расти и иметь более гибкую структуру.
-
-## ERD
-
-Основные сущности:
-
+Таблицы:
 - users
 - posts
 - clubs
 - news
 - comments
-- messages
 - friends
+- club_members
+
+В SQL хранятся:
+- пользователи;
+- посты;
+- клубы;
+- друзья;
+- новости;
+- связи между сущностями.
+
+---
+
+# NoSQL база данных
+
+MongoDB Atlas используется для хранения сообщений.
+
+Коллекция:
+- messages
+
+В MongoDB хранятся:
+- sender_id
+- receiver_id
+- text
+- created_at
+
+MongoDB используется потому что сообщения являются гибкими данными и не требуют сложной реляционной структуры.
+
+---
+
+# ERD структура
 
 Связи:
+- один пользователь может создавать много постов;
+- один пост может содержать много комментариев;
+- один пользователь может иметь много друзей;
+- один клуб может содержать много участников.
 
-- один пользователь может иметь много постов
-- один пользователь может иметь много комментариев
-- один пост может иметь много комментариев
-- пользователи могут отправлять сообщения друг другу
-- пользователь может состоять в клубах
+---
 
-## Запуск backend
+# Примеры API
 
-```bash
-cd backend
-go run main.go
-```
+## SQL API
 
-Backend запускается на:
+GET /posts
 
-```txt
-http://localhost:8080
-```
+POST /posts
 
-## Запуск frontend
+GET /clubs
 
-```bash
-cd frontend
-npm install
-npm run dev
-```
+GET /news
 
-Frontend запускается на:
+## NoSQL API
 
-```txt
-http://localhost:5173
-```
+GET /messages
 
-## User Flow
+POST /messages
 
-```txt
-Login / Register
-↓
-Profile
-↓
-Posts / Clubs / News
-↓
-Search / Navigation
-↓
-Admin Panel
-```
+---
 
-## Что можно улучшить в будущем
+# Авторизация
 
-- realtime chat через WebSocket
-- полноценные личные сообщения
-- система комментариев
-- роли admin/student
-- загрузка аватара
-- полноценная модерация постов
-- deployment backend на Railway
-- deployment frontend на Vercel
+Авторизация реализована через JWT токены.
 
-## Авторы
+Пользователь может:
+- зарегистрироваться;
+- войти в систему;
+- получать доступ к защищённым routes.
 
-Edil  
-Beknazar
+---
+
+# Скриншоты
+
+В проекте присутствуют скриншоты:
+- PostgreSQL таблиц;
+- ERD диаграммы;
+- MongoDB Atlas;
+- Thunder Client запросов;
+- frontend страниц;
+- backend сервера.
+
+---
+
+# Авторы
+
+- Edil
+- Beknazar
+
+---
+
+# Итог
+
+Проект демонстрирует:
+- fullstack разработку;
+- интеграцию frontend и backend;
+- работу SQL и NoSQL баз данных;
+- REST API архитектуру;
+- JWT авторизацию;
+- CRUD функциональность;
+- проектирование баз данных и ERD.
